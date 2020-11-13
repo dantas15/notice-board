@@ -1,0 +1,31 @@
+{
+  "name": "quadro-de-avisos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gusGalote/notice-board.git"
+  },
+  "author": "gusGalote",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gusGalote/notice-board/issues"
+  },
+  "homepage": "https://github.com/gusGalote/notice-board#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "knex": "^0.21.12",
+    "mysql2": "^2.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
