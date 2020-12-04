@@ -1,0 +1,54 @@
+<%- include('./partials/head', {title: "New Notice"}) %>
+  <body>
+    <!-- navbar -->
+    <%- include('./partials/navbar') %>
+    <div class="container">
+      <br><br>
+      
+      <a href="#"> <i class="fas fa-long-arrow-alt-left"></i> Voltar</a> <br><br>
+      <div class="card shadow">
+        <div class="card-header bg-purple text-white pl-5 p-4"> 
+          <h2 class="float-left"> <i class="fas fa-clipboard-list" ></i> Novo Aviso</h2>
+          <a href="/notices/new" class="btn btn-lg btn-outline-light float-right"> <i class="fas fa-plus-circle" ></i> Novo aviso</a>
+        </div> <!-- card-header-->
+        <div class="card-body p-5">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Data</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <% if ( notices.length < 1) { %>
+               <tr>
+                 <td colspan="4" class="text-center">Nenhum aviso cadastrado</td>
+               </tr>
+              <% } %>
+
+              <% notices.forEach(notice => { %>
+
+                <tr>
+                  <th scope="row"> <%= notice.ID_notices %> </th>
+                  <td><%= notice.title%></td>
+                  <td><%= moment(notice.date).format('DD/MM/YYYY') %> </td>
+                  <td>
+                    <button class="btn btn-secondary">Excluir</button>
+                    <button class="btn btn-primary">Alterar</button>
+                  </td>
+                </tr>
+
+              <% }) %>
+            </tbody>
+          </table>
+
+        </div> <!-- card-body -->
+      </div> <!-- card-->
+    </div> <!-- container -->
+    
+    <%- include('./partials/scripts_import')%> 
+  </body>
+</html>

@@ -20,4 +20,18 @@ function save(notice){
 
 }// fim do salvar
 
-module.exports = {save}
+/**
+ * Seleciona todos os avisos cadastrados
+ * @return {object} Objeto com todos os avisos cadastrados ou uma mensagem de erro
+ */
+function selectAll(){
+  return db.select('*').from('notices')
+  .then(notices =>{
+    return notices
+  })
+  .catch(err =>{
+    return { type: "error", body:`Erro: ${err}`}
+  })
+}// fim do selectAll
+
+module.exports = {save, selectAll}

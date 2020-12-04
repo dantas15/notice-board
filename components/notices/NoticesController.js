@@ -1,15 +1,17 @@
 const router = require('express').Router()
 
+const Notices = require('./Notices')
 const Notice = require('./Notices')
 
 router.get('/',(req,res)=>{
   res.send("Main Page")
 })
 
-router.get('/notices',(req,res)=>{
-  res.send('All notices')
+router.get('/notices', async(req,res)=>{
+  const notices = await Notices.selectAll()
+  res.render('notices',{notices})
 })
-
+  
 router.get('/notices/new',(req,res)=>{
   res.render('notices_form')
 })
