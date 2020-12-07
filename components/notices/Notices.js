@@ -34,4 +34,12 @@ function selectAll(){
   })
 }// fim do selectAll
 
-module.exports = {save, selectAll}
+/**
+ * Função que exclui um aviso no banco de dados
+ * @param {int} id Id do aviso
+ */
+function deletingNotice(id){
+  return db.del().from('notices').where('ID_notices', id)
+}
+
+module.exports = {save, selectAll, deletingNotice}

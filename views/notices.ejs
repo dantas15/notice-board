@@ -36,7 +36,11 @@
                   <td><%= notice.title%></td>
                   <td><%= moment(notice.date).format('DD/MM/YYYY') %> </td>
                   <td>
-                    <button class="btn btn-secondary">Excluir</button>
+                    <button 
+                    class="btn btn-secondary" 
+                    data-toggle="modal"
+                    data-target="#deleteModal" 
+                    onclick = "deleteNotice(event, '<%= notice.ID_notices %>' )" > Excluir </button>
                     <button class="btn btn-primary">Alterar</button>
                   </td>
                 </tr>
@@ -48,7 +52,60 @@
         </div> <!-- card-body -->
       </div> <!-- card-->
     </div> <!-- container -->
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="excluirModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deseja realmente excluir este aviso?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Título</th>
+              <th scope="col">Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="modal-tr-body">
+              <td> ID</td>
+              <td> Título</td>
+              <td> Data</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+        <form id="form-delete" method="GET">
+          <button type="submit" class="btn btn-primary">Sim</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
     
     <%- include('./partials/scripts_import')%> 
+
+    <!-- script excluir-->
+    <script>
+      function deleteNotice(event, id){
+        var tdButtons = event.target.parentElement
+        var trNotice = tdButtons.parentElement
+        var trModal = document.getElementById("modal-tr-body")
+
+        var formDelete = document.getElementById("form-delete")
+        formDelete.action = "/notices/delete/"+id
+
+        trModal.innerHTML = trNotice.innerHTML
+        trModal.removeChild(trModal.lastElementChild)
+      }
+    </script>
   </body>
 </html>

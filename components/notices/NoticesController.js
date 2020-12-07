@@ -26,4 +26,10 @@ router.post('/notices/new', async (req,res)=>{
 
 })
 
+router.get( "/notices/delete/:id", async(req,res) => {
+  const id = Number(req.params.id)
+  await Notices.deletingNotice(id)
+  res.redirect('/notices')
+})
+
 module.exports = router
