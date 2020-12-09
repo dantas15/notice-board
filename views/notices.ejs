@@ -8,7 +8,7 @@
       <a href="#"> <i class="fas fa-long-arrow-alt-left"></i> Voltar</a> <br><br>
       <div class="card shadow">
         <div class="card-header bg-purple text-white pl-5 p-4"> 
-          <h2 class="float-left"> <i class="fas fa-clipboard-list" ></i> Novo Aviso</h2>
+          <h2 class="float-left"> <i class="fas fa-clipboard-list" ></i> Avisos cadastrados</h2>
           <a href="/notices/new" class="btn btn-lg btn-outline-light float-right"> <i class="fas fa-plus-circle" ></i> Novo aviso</a>
         </div> <!-- card-header-->
         <div class="card-body p-5">
@@ -37,11 +37,11 @@
                   <td><%= moment(notice.date).format('DD/MM/YYYY') %> </td>
                   <td>
                     <button 
-                    class="btn btn-secondary" 
-                    data-toggle="modal"
-                    data-target="#deleteModal" 
-                    onclick = "deleteNotice(event, '<%= notice.ID_notices %>' )" > Excluir </button>
-                    <button class="btn btn-primary">Alterar</button>
+                      class="btn btn-secondary" 
+                      data-toggle="modal"
+                      data-target="#deleteModal" 
+                      onclick = "deleteNotice(event, '<%= notice.ID_notices %>' )" > Excluir </button>
+                    <a href="/notices/edit/<%= notice.ID_notices %>" class="btn btn-primary">Alterar</a href="notices/edit/:id">
                   </td>
                 </tr>
 
