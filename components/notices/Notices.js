@@ -44,7 +44,7 @@ function edit(notice, id){
  * @return {object} Objeto com todos os avisos cadastrados ou uma mensagem de erro
  */
 function selectAll(){
-  return db.select('*').from('notices')
+  return db.select('*').from('notices').orderBy('date','asc')
   .then(notices =>{
     return notices
   })

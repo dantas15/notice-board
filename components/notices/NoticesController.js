@@ -3,8 +3,9 @@ const router = require('express').Router()
 const Notices = require('./Notices')
 const Notice = require('./Notices')
 
-router.get('/',(req,res)=>{
-  res.send("Main Page")
+router.get('/', async (req,res)=>{
+  const notices = await Notices.selectAll()
+  res.render('index', {notices})
 })
 
 router.get('/notices', async(req,res)=>{
